@@ -1,0 +1,2 @@
+# testing/linting-related dependencies
+black==22.12.0
