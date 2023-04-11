@@ -1,5 +1,0 @@
-[sales]
-host=localhost
-user=root
-dbname=sales
-port=5432
