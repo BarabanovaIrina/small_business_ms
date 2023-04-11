@@ -1,10 +1,9 @@
-version: '3.9'
+version: "3.9"
 services:
   warehouse:
     build:
       context: .
-      dockerfile:
-        Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "8002:8002"
     volumes:

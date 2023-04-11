@@ -1,0 +1,9 @@
+[flake8]
+exclude = .env*,.venv*,.git
+max-complexity = 10
+# See https://en.wikipedia.org/wiki/Cyclomatic_complexity
+extend-ignore = E203
+max-line-length = 88
+# see https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#flake8
+per-file-ignores = settings.py: E501
+# See https://stackoverflow.com/questions/8427701/how-to-ignore-pyflakes-errors-imported-but-unused-in-the-init-py-file

@@ -15,17 +15,16 @@ spec:
         app: sales-deployment
     spec:
       containers:
-      - name: sales
-        image: sales-sales
-        imagePullPolicy: Never
-        env:
-          - name: PORT
-            value: "8081"
-        ports:
-        - containerPort: 8081
+        - name: sales
+          image: sales-sales
+          imagePullPolicy: Never
+          env:
+            - name: PORT
+              value: "8081"
+          ports:
+            - containerPort: 8081
       imagePullSecrets:
         - name: sales
-
 
 ---
 apiVersion: v1

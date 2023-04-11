@@ -1,6 +1,6 @@
-from django.views import View
-from django.http import JsonResponse
 import requests
+from django.http import JsonResponse
+from django.views import View
 
 
 class SoldItemsView(View):

@@ -15,17 +15,16 @@ spec:
         app: wh-deployment
     spec:
       containers:
-      - name: wh
-        image: warehouse-warehouse
-        imagePullPolicy: Never
-        env:
-          - name: PORT
-            value: "8082"
-        ports:
-        - containerPort: 8082
+        - name: wh
+          image: warehouse-warehouse
+          imagePullPolicy: Never
+          env:
+            - name: PORT
+              value: "8082"
+          ports:
+            - containerPort: 8082
       imagePullSecrets:
         - name: sales
-
 
 ---
 apiVersion: v1
