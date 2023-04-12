@@ -2,29 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wh-deployment
-  labels:
-    app: wh-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: wh-deployment
+      app: wh-selector
   template:
     metadata:
       labels:
-        app: wh-deployment
+        app: wh-selector
     spec:
       containers:
-        - name: wh
+        - name: wh-container
           image: warehouse-warehouse
           imagePullPolicy: Never
-          env:
-            - name: PORT
-              value: "8082"
           ports:
-            - containerPort: 8082
-      imagePullSecrets:
-        - name: sales
+            - containerPort: 8002
 
 ---
 apiVersion: v1
@@ -32,11 +25,10 @@ kind: Service
 metadata:
   name: wh-service
 spec:
-  type: LoadBalancer
   ports:
     - name: http
       protocol: TCP
-      port: 8082
-      targetPort: 8082
+      port: 5555
+      targetPort: 8002
   selector:
-    app: wh-deployment
+    app: wh-selector
