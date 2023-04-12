@@ -4,7 +4,7 @@ from .views import ItemDelete, ItemDetail, ItemsList
 
 urlpatterns = [
     path("items", ItemsList.as_view()),
-    path("<str:pk>/", ItemDetail.as_view()),
-    path("update/<str:pk>", ItemDetail.as_view()),
-    path("delete/<str:pk>", ItemDelete.as_view()),
+    path("items/<int:pk>", ItemDetail.as_view()),
+    path("update/<int:pk>", ItemDetail.as_view()),
+    path("delete/<int:pk>", ItemDelete.as_view()),
 ]
