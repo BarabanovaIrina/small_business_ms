@@ -7,7 +7,7 @@ pre-commit-check:
 	pre-commit run --all-files
 
 run-tests:
-	pytest
+	python warehouse/manage.py test warehouse
 
 test-coverage:
 	pytest --cov=rates --cov-report xml

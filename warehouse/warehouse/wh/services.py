@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Dict, Optional, Union
 
 from .models import PRODUCTS
 
@@ -7,8 +7,16 @@ def all_products():
     return PRODUCTS
 
 
-def get_product(pk: int):
-    return PRODUCTS.get(pk)
+def get_product_by_id(pk: int) -> Union[Dict, str]:
+    result = PRODUCTS.get(pk)
+    return result if result is not None else "Opps, product not found"
+
+
+def get_product_by_name(name: str) -> Union[Dict, str]:
+    for product in PRODUCTS.values():
+        if product["product_name"] == name:
+            return product
+    return "Opps, product not found"
 
 
 def create_product(

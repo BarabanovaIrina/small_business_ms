@@ -6,7 +6,7 @@ from .services import (
     all_products,
     create_product,
     delete_product,
-    get_product,
+    get_product_by_id,
     update_product,
 )
 
@@ -27,12 +27,12 @@ class ItemsList(View):
 
 class ItemDetail(View):
     def get(self, request, pk: int):
-        product = get_product(pk)
+        product = get_product_by_id(pk)
         return JsonResponse(product)
 
     @csrf_exempt
     def post(self, request, pk: int):
-        name = request.POST.get("name")
+        name = request.POST.get("product_name")
         quantity = request.POST.get("quantity")
         price = request.POST.get("price")
         update_product(pk=pk, product_name=name, quantity=quantity, price=price)
