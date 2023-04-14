@@ -22,3 +22,4 @@ jobs:
         run: |
           make run-wh-tests
           make run-sales-tests
+          make run-ac-tests

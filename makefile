@@ -12,5 +12,8 @@ run-wh-tests:
 run-sales-tests:
 	python sales/manage.py test sales
 
+run-ac-tests:
+	python accounting/manage.py test accounting
+
 test-coverage:
 	pytest --cov=rates --cov-report xml
