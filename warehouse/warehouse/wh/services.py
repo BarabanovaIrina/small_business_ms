@@ -39,7 +39,7 @@ def update_product(
     price: Optional[float] = None,
 ):
     if product_name is not None:
-        PRODUCTS[pk]["name"] = product_name
+        PRODUCTS[pk]["product_name"] = product_name
     if quantity is not None:
         PRODUCTS[pk]["quantity"] = quantity
     if price is not None:
