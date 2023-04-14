@@ -28,14 +28,23 @@ class TestWarehouseItemDetailView(TestCase):
         "warehouse.wh.views.get_product_by_id",
         return_value={"product_name": "name_1", "quantity": 1, "price": 10},
     )
-    def test_get_warehouse_item_by_id_returns_200(self, create_product_mock):
+    def test_get_warehouse_item_by_id_returns_200(self, get_product_by_id_mock):
         response = self.client.get("/warehouse/items/1")
-        create_product_mock.assert_called_once()
+        get_product_by_id_mock.assert_called_once()
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             json.loads(response.content),
             {"product_name": "name_1", "quantity": 1, "price": 10},
         )
+
+    @patch(
+        "warehouse.wh.views.get_product_by_id",
+        return_value=None,
+    )
+    def test_get_warehouse_item_by_id_returns_404(self, get_product_by_id_mock):
+        response = self.client.get("/warehouse/items/100")
+        get_product_by_id_mock.assert_called_once()
+        self.assertEqual(response.status_code, 404)
 
     @patch("warehouse.wh.views.update_product")
     def test_edit_warehouse_item_by_id_returns_200(self, update_product_mock):
@@ -44,11 +53,9 @@ class TestWarehouseItemDetailView(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b"Item 1 updated")
 
-
-class TestWarehouseItemDeleteView(TestCase):
     @patch("warehouse.wh.views.delete_product")
     def test_delete_warehouse_item_by_id_returns_200(self, delete_product_mock):
-        response = self.client.post("/warehouse/delete/2")
+        response = self.client.delete("/warehouse/items/2")
         delete_product_mock.assert_called_once()
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b"Item 2 deleted")

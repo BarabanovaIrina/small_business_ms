@@ -32,7 +32,7 @@ class TestWarehouseServices(TestCase):
             result,
         )
 
-    def test_get_product(self):
+    def test_get_product_by_id(self):
         # when
         result = get_product_by_id(1)
         # then
@@ -90,4 +90,4 @@ class TestWarehouseServices(TestCase):
     def test_delete_product(self):
         delete_product(3)
         result = get_product_by_id(3)
-        self.assertEqual("Opps, product not found", result)
+        self.assertEqual(None, result)

@@ -1,4 +1,4 @@
-from django.http import HttpResponse, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
@@ -28,6 +28,8 @@ class ItemsList(View):
 class ItemDetail(View):
     def get(self, request, pk: int):
         product = get_product_by_id(pk)
+        if product is None:
+            raise Http404("Opps, product not found")
         return JsonResponse(product)
 
     @csrf_exempt
@@ -38,9 +40,6 @@ class ItemDetail(View):
         update_product(pk=pk, product_name=name, quantity=quantity, price=price)
         return HttpResponse(f"Item {pk} updated")
 
-
-class ItemDelete(View):
-    @csrf_exempt
-    def post(self, request, pk: int):
+    def delete(self, request, pk: int):
         delete_product(pk)
         return HttpResponse(f"Item {pk} deleted")
