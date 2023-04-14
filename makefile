@@ -6,8 +6,11 @@ install:
 pre-commit-check:
 	pre-commit run --all-files
 
-run-tests:
+run-wh-tests:
 	python warehouse/manage.py test warehouse
+
+run-sales-tests:
+	python sales/manage.py test sales
 
 test-coverage:
 	pytest --cov=rates --cov-report xml
