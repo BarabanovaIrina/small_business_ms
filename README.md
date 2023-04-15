@@ -36,7 +36,7 @@ and the data should be available through different offices around the world.
 
 ## Design
 
-Stack: Python, Django, Postgres, Kubernetes
+Stack: Python, Django, Postgres, Kubernetes, NGINX
 
 **Why Django?** Personal curiosity, because I've never worked with it.
 
@@ -44,6 +44,8 @@ Stack: Python, Django, Postgres, Kubernetes
 intra-service communication.
 
 **Why Postgres?** This is the most common enterprise DB solution.
+
+**Why NGINX?** It provides the ability to run API Gateway in Kubernetes Cluster
 
 ### What is planned to be Done:
 
@@ -81,12 +83,63 @@ Sales and Warehouse which is accessible via the following endpoint:
 curl "http://<GATEWAY_IP>:<GATEWAY_PORT>/sales/sold_items"
 ```
 
-There is a [Postman collection](https://github.com/BarabanovaIrina/small_business_ms/tree/docs/docs/postman/small_business.postman_collection.json) with all the available(at the moment) requests.
+### Project local setup:
+
+1.  You may use any local kubernetes services you like, but this project
+    was run under Docker Desktop Kubernetes. Do the following steps to use it:
+
+    1. From the Docker Dashboard, select the Settings.
+    2. Select Kubernetes from the left sidebar.
+    3. Next to Enable Kubernetes, select the checkbox.
+    4. Select Apply & Restart to save the settings and then click Install to confirm.
+
+       [More information](https://docs.docker.com/desktop/kubernetes/) about Kubernetes
+       under Docker Desktop you may find following the link.
+
+2.  Please, make sure you have kubectl installed. If not, use the [instructions](https://kubernetes.io/docs/tasks/tools/)
+    to install
+
+3.  Using git bash or terminal(macOS) run the following commands:
+
+    1. Choose a directory you want to clone a project and run:
+
+    ```shell
+    git clone git@github.com:BarabanovaIrina/small_business_ms.git
+    ```
+
+    2. Without changing the directory run build all services necessary images:
+
+    ```shell
+    sh small_business_ms/k8s/build_images.sh
+    ```
+
+    3. Build NGINX API Gateway and enable port forwarding:
+
+    ```shell
+    sh small_business_ms/k8s/deploy_all.sh
+    ```
+
+    4. If you face issues like `Internal error occurred`, please,
+       run the previous step again. That might happen when parts take
+       some time to deploy.
+
+    5. As a final result you should see port forwarding messages:
+
+    ```shell
+    Forwarding from 127.0.0.1:8080 -> 80
+    Forwarding from [::1]:8080 -> 80
+    Forwarding from 127.0.0.1:8443 -> 443
+    Forwarding from [::1]:8443 -> 443
+    ```
+
+There is a [Postman collection](https://github.com/BarabanovaIrina/small_business_ms/tree/docs/docs/postman/small_business.postman_collection.json) with all the available(at the moment) requests
+you may test.
 
 ### What is yet to be Done:
 
 - Replace dummy Dict database with a real Postgres database
 - Extend CRUD for other services
-- Come up with a Scenario of using message bus in intra-service communication
+- Come up with a scenario of using message bus in intra-service communication
 - Create CD pipelines
-- Add autodocumentation
+- Add auto-documentation
+- Fix imports in test or divide services into separate repositories
