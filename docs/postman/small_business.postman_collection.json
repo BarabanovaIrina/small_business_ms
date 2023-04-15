@@ -1,0 +1,226 @@
+{
+  "info": {
+    "_postman_id": "d525493e-02dd-4ab9-a098-410aa5a18b56",
+    "name": "sb_ms",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19602613"
+  },
+  "item": [
+    {
+      "name": "warehouse/items",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "host": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Host",
+            "value": "example.ira.com",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/warehouse/items",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["warehouse", "items"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "warehouse/items/1",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "host": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Host",
+            "value": "example.ira.com",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/warehouse/items/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["warehouse", "items", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "warehouse/items/1",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "host": true
+        }
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Host",
+            "value": "example.ira.com",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"new_name\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/warehouse/update/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["warehouse", "update", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "warehouse/items/1",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "host": true
+        }
+      },
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Host",
+            "value": "example.ira.com",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/warehouse/items/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["warehouse", "items", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sales/sold_items",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "host": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Host",
+            "value": "example.ira.com",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/sales/sold_items",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["sales", "sold_items"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sales/orders",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "host": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Host",
+            "value": "example.ira.com",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/sales/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["sales", "orders"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sales/orders/1",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "host": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Host",
+            "value": "example.ira.com",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/sales/orders/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["sales", "orders", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accounting/transactions",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {
+          "host": true
+        }
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Host",
+            "value": "example.ira.com",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/accounting/transactions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["accounting", "transactions"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

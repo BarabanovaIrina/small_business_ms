@@ -6,14 +6,10 @@ install:
 pre-commit-check:
 	pre-commit run --all-files
 
-run-wh-tests:
-	python warehouse/manage.py test warehouse
-
-run-sales-tests:
-	python sales/manage.py test sales
-
-run-ac-tests:
-	python accounting/manage.py test accounting
-
-test-coverage:
-	pytest --cov=rates --cov-report xml
+run-tests:
+	coverage run --source "warehouse" warehouse/manage.py test warehouse
+	coverage xml -o warehouse/coverage.xml
+	coverage run --source "sales" sales/manage.py test sales
+	coverage xml -o sale/coverage.xml
+	coverage run --source "accounting" accounting/manage.py test accounting
+	coverage xml -o accounting/coverage.xml

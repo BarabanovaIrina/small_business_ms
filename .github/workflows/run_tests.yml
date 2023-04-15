@@ -20,6 +20,8 @@ jobs:
           make install
       - name: Run tests
         run: |
-          make run-wh-tests
-          make run-sales-tests
-          make run-ac-tests
+          make run-tests
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
