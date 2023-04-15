@@ -3,6 +3,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![pre-commit hooks](https://github.com/BarabanovaIrina/small_business_ms/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/BarabanovaIrina/small_business_ms/actions)
 [![Tests](https://github.com/BarabanovaIrina/small_business_ms/actions/workflows/run_tests.yml/badge.svg)](https://github.com/BarabanovaIrina/small_business_ms/actions)
+[![Test coverage](https://codecov.io/github/BarabanovaIrina/small_business_ms/branch/master/graph/badge.svg?token=5IXSUG65ZP)](https://codecov.io/github/BarabanovaIrina/small_business_ms)
 
 ## Project description
 
