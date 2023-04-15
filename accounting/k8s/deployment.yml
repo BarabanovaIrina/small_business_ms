@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ac-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ac-selector
+  template:
+    metadata:
+      labels:
+        app: ac-selector
+    spec:
+      containers:
+        - name: ac-container
+          image: accounting-accounting
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8003
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ac-service
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 3333
+      targetPort: 8003
+  selector:
+    app: ac-selector
