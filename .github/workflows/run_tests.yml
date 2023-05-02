@@ -21,6 +21,7 @@ jobs:
       - name: Run tests
         env:
           WH_SECRET_KEY: ${{ secrets.WH_SECRET_KEY }}
+          AC_SECRET_KEY: ${{ secrets.AC_SECRET_KEY }}
         run: |
           make run-tests
       - name: Upload coverage to Codecov

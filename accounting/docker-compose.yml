@@ -1,10 +1,28 @@
 version: "3.8"
 services:
   accounting:
+    depends_on:
+      - accounting_db
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8003:8003"
+    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
     volumes:
       - .:/app
+  accounting_db:
+    image: postgres
+    restart: always
+    command: -p 5433
+    env_file:
+      - .env
+    expose:
+      - 5433
+    ports:
+      - "5433:5433"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
