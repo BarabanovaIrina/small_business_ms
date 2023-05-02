@@ -1,10 +1,28 @@
 version: "3.9"
 services:
   warehouse:
+    depends_on:
+      - warehouse_db
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8002:8002"
+    command: sh -c "chmod +x /app/migrate.sh && sh /app/migrate.sh && /app/entrypoint.sh"
     volumes:
       - .:/app
+  warehouse_db:
+    image: postgres
+    restart: always
+    command: -p 5434
+    env_file:
+      - .env
+    expose:
+      - 5434
+    ports:
+      - "5434:5434"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
