@@ -1,12 +1,54 @@
-PRODUCTS = {
-    1: {"product_name": "name_1", "quantity": 1, "price": 10},
-    2: {"product_name": "name_2", "quantity": 2, "price": 20},
-    3: {"product_name": "name_3", "quantity": 3, "price": 30},
-    4: {"product_name": "name_4", "quantity": 4, "price": 40},
-    5: {"product_name": "name_5", "quantity": 5, "price": 50},
-    6: {"product_name": "name_6", "quantity": 6, "price": 60},
-    7: {"product_name": "name_7", "quantity": 7, "price": 70},
-    8: {"product_name": "name_8", "quantity": 8, "price": 80},
-    9: {"product_name": "name_9", "quantity": 9, "price": 90},
-    10: {"product_name": "name_10", "quantity": 10, "price": 100},
-}
+from django.db.models import (
+    CASCADE,
+    CharField,
+    DecimalField,
+    ForeignKey,
+    IntegerField,
+    Model,
+    TextField,
+)
+
+from ..common.managers import SafeGetManager
+
+
+class Item(Model):
+    class Meta:
+        unique_together = (
+            "name",
+            "country_of_origin",
+        )
+
+    name = CharField(max_length=200)
+    description = TextField()
+    country_of_origin = CharField(max_length=60)
+    objects = SafeGetManager()
+
+    def __repr__(self):
+        return f"{self.name}, {self.country_of_origin}"
+
+    def __str__(self):
+        return self.__repr__()
+
+
+class Price(Model):
+    item = ForeignKey(Item, on_delete=CASCADE)
+    price = DecimalField(max_digits=8, decimal_places=2, default=0.0)
+    objects = SafeGetManager()
+
+    def __repr__(self):
+        return f"{self.item}, {self.price}"
+
+    def __str__(self):
+        return self.__repr__()
+
+
+class Quantity(Model):
+    item = ForeignKey(Item, on_delete=CASCADE)
+    quantity = IntegerField(default=0)
+    objects = SafeGetManager()
+
+    def __repr__(self):
+        return f"{self.item}, {self.quantity}"
+
+    def __str__(self):
+        return self.__repr__()

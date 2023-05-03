@@ -1,3 +1,5 @@
+import json
+
 from django.http import Http404, HttpResponse, JsonResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
@@ -14,15 +16,27 @@ from .services import (
 class ItemsList(View):
     def get(self, request):
         products = all_products()
-        return JsonResponse(products)
+        return HttpResponse(
+            json.dumps([product.dict() for product in products]),
+            content_type="application/json",
+        )
 
     @csrf_exempt
     def post(self, request):
-        name = request.POST.get("name")
-        quantity = request.POST.get("quantity")
-        price = request.POST.get("price")
-        create_product(product_name=name, quantity=quantity, price=price)
-        return HttpResponse("Product created")
+        data = json.loads(request.body)
+        name = data.get("name")
+        description = data.get("description")
+        country_of_origin = data.get("country_of_origin")
+        quantity = data.get("quantity")
+        price = data.get("price")
+        product_id = create_product(
+            name=name,
+            description=description,
+            country_of_origin=country_of_origin,
+            quantity=quantity,
+            price=price,
+        )
+        return HttpResponse(f"Product with id={product_id} created")
 
 
 class ItemDetail(View):
@@ -30,14 +44,27 @@ class ItemDetail(View):
         product = get_product_by_id(pk)
         if product is None:
             raise Http404("Opps, product not found")
-        return JsonResponse(product)
+        return JsonResponse(product.dict())
 
     @csrf_exempt
-    def post(self, request, pk: int):
-        name = request.POST.get("product_name")
-        quantity = request.POST.get("quantity")
-        price = request.POST.get("price")
-        update_product(pk=pk, product_name=name, quantity=quantity, price=price)
+    def put(self, request, pk: int):
+        data = json.loads(request.body)
+        name = data.get("name")
+        description = data.get("description")
+        country_of_origin = data.get("country_of_origin")
+        quantity = data.get("quantity")
+        price = data.get("price")
+        try:
+            update_product(
+                pk=pk,
+                name=name,
+                description=description,
+                country_of_origin=country_of_origin,
+                quantity=quantity,
+                price=price,
+            )
+        except ValueError:
+            raise Http404("Opps, product not found")
         return HttpResponse(f"Item {pk} updated")
 
     def delete(self, request, pk: int):
