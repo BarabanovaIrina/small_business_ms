@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: sales-container
-          image: sales-sales
+          image: sales
           imagePullPolicy: Never
           ports:
             - containerPort: 8001

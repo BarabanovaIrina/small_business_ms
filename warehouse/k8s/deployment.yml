@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: wh-container
-          image: warehouse-warehouse
+          image: warehouse
           imagePullPolicy: Never
           ports:
             - containerPort: 8002

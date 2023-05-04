@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: ac-container
-          image: accounting-accounting
+          image: accounting
           imagePullPolicy: Never
           ports:
             - containerPort: 8003

@@ -137,9 +137,9 @@ you may test.
 
 ### What is yet to be Done:
 
-- Replace dummy Dict database with a real Postgres database
-- Extend CRUD for other services
+- ~~Replace dummy Dict database with a real Postgres database~~
+- ~~Extend CRUD for other services~~
 - Come up with a scenario of using message bus in intra-service communication
-- Create CD pipelines
+- ~~Create CD pipelines~~
 - Add auto-documentation
 - Fix imports in test or divide services into separate repositories
