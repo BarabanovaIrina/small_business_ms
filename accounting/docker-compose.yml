@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   accounting:
+    image: accounting
     depends_on:
       - accounting_db
     build:

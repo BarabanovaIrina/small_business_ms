@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   warehouse:
+    image: warehouse
     depends_on:
       - warehouse_db
     build:
