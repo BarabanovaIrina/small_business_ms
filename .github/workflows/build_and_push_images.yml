@@ -53,3 +53,18 @@ jobs:
           push: true
           tags: ${{ steps.ac_meta.outputs.tags }}
           labels: ${{ steps.ac_meta.outputs.labels }}
+
+      - name: Extract metadata (tags, labels) for Sales
+        id: sls_meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.SLS_HUB_REPOSITORY }}
+
+      - name: Build and push warehouse
+        uses: docker/build-push-action@v4
+        with:
+          context: ./sales
+          file: ./sales/Dockerfile
+          push: true
+          tags: ${{ steps.sls_meta.outputs.tags }}
+          labels: ${{ steps.sls_meta.outputs.labels }}
