@@ -132,7 +132,7 @@ curl "http://<GATEWAY_IP>:<GATEWAY_PORT>/sales/sold_items"
     Forwarding from [::1]:8443 -> 443
     ```
 
-There is a [Postman collection](https://github.com/BarabanovaIrina/small_business_ms/tree/docs/docs/postman/small_business.postman_collection.json) with all the available(at the moment) requests
+There is a [Postman collection](https://github.com/BarabanovaIrina/small_business_ms/blob/master/docs/postman/small_business.postman_collection.json) with all the available(at the moment) requests
 you may test.
 
 ### What is yet to be Done:
