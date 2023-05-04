@@ -24,11 +24,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
+      - name: Extract metadata (tags, labels) for Warehouse
+        id: wh_meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.HUB_REPOSITORY }}
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.WH_HUB_REPOSITORY }}
 
       - name: Build and push warehouse
         uses: docker/build-push-action@v4
@@ -36,5 +36,20 @@ jobs:
           context: ./warehouse
           file: ./warehouse/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.wh_meta.outputs.tags }}
+          labels: ${{ steps.wh_meta.outputs.labels }}
+
+      - name: Extract metadata (tags, labels) for Accounting
+        id: ac_meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.AC_HUB_REPOSITORY }}
+
+      - name: Build and push warehouse
+        uses: docker/build-push-action@v4
+        with:
+          context: ./accounting
+          file: ./accounting/Dockerfile
+          push: true
+          tags: ${{ steps.ac_meta.outputs.tags }}
+          labels: ${{ steps.ac_meta.outputs.labels }}
