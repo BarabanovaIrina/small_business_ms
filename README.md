@@ -92,7 +92,7 @@ This will run 3 separate services with databases
    ```
 2. Use `warehouse.init_data.sql`, `accounting.init_data.sql`
    and `sales.init_data.sql` scripts to fill in some data (I'm using DBeaver)
-3. Use the corresponding [Postman collections](<(https://github.com/BarabanovaIrina/small_business_ms/blob/master/docs/postman/)>) to run.
+3. Use the corresponding [Postman collections](https://github.com/BarabanovaIrina/small_business_ms/blob/master/docs/postman/) to run.
 
 ### Local Cluster setup:
 
