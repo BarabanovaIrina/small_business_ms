@@ -83,7 +83,18 @@ Sales and Warehouse which is accessible via the following endpoint:
 curl "http://<GATEWAY_IP>:<GATEWAY_PORT>/sales/sold_items"
 ```
 
-### Project local setup:
+### Running services under Docker:
+
+This will run 3 separate services with databases
+
+1. ```shell
+   sh small_business_ms/k8s/run_services.sh
+   ```
+2. Use `warehouse.init_data.sql`, `accounting.init_data.sql`
+   and `sales.init_data.sql` scripts to fill in some data (I'm using DBeaver)
+3. Use the corresponding [Postman collections](<(https://github.com/BarabanovaIrina/small_business_ms/blob/master/docs/postman/)>) to run.
+
+### Local Cluster setup:
 
 1.  You may use any local kubernetes services you like, but this project
     was run under Docker Desktop Kubernetes. Do the following steps to use it:

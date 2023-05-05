@@ -30,7 +30,13 @@ SECRET_KEY = os.environ.get("SLS_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "wh-service", "example.ira.com"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "wh-service",
+    "example.ira.com",
+    "host.docker.internal",
+]
 
 
 # Application definition

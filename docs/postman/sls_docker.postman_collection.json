@@ -1,0 +1,142 @@
+{
+  "info": {
+    "_postman_id": "52c5261d-00b5-421c-9bf4-32b31c37e23e",
+    "name": "sls_docker",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19602613"
+  },
+  "item": [
+    {
+      "name": "sales/orders",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8001/sales/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["sales", "orders"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sales/sold_items",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8001/sales/sold_items",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["sales", "sold_items"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sls/orders",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": " {\n        \"customer_id\": 10,\n        \"items\": [\n            {\n                \"id\": 3,\n                \"price\": 30.0,\n                \"quantity\": 3\n            },\n            {\n                \"id\": 4,\n                \"price\": 40.0,\n                \"quantity\": 4\n            }\n        ]\n }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8001/sales/orders",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["sales", "orders"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sls/oreder/<just_created_order>",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/sales/orders/<just_created_item>",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["sales", "orders", "<just_created_item>"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sls/oreder/<just_created_order> Copy",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"customer_id\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8001/sales/orders/<just_created_item>",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["sales", "orders", "<just_created_item>"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "sls/order",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/sales/orders/<just_created_item>",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["sales", "orders", "<just_created_item>"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -71,8 +71,13 @@ class OrderDetail(View):
 
 
 class SoldItemsView(View):
-    wh_url = "http://wh-service:5555/warehouse/items"
+    # in cluster (between pods)
+    # wh_url = "http://wh-service:5555/warehouse/items"
+    # in Docker (between containers)
+    wh_url = "http://host.docker.internal:8002/warehouse/items"
+    # local run
+    # wh_url = "http://localhost:8002/warehouse/items"
 
     def get(self, request):
         response = requests.get(self.wh_url)
-        return JsonResponse(data=response.json())
+        return HttpResponse(response.content, content_type="application/json")
