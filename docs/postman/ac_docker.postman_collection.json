@@ -1,0 +1,127 @@
+{
+  "info": {
+    "_postman_id": "6239addd-87ed-4793-9b04-9c72b5f55fed",
+    "name": "ac_local",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "19602613"
+  },
+  "item": [
+    {
+      "name": "accounting/transactions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/accounting/transactions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["accounting", "transactions"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accounting/transactions/1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/accounting/transactions/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["accounting", "transactions", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accounting/transactions",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"order_id\": 1,\n    \"order_sum\": 17.0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8001/accounting/transactions",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["accounting", "transactions"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accounting/transactions/<just_created_transaction>",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8001/accounting/transactions/<just_created_transaction>",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["accounting", "transactions", "<just_created_transaction>"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accounting/transactions/<just_created_transaction>",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"order_id\": 321\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8001/accounting/transactions/<just_created_transaction>",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["accounting", "transactions", "<just_created_transaction>"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "accounting/transactions/<just_created_transaction>",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8001/accounting/transactions/<just_created_transaction>",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8001",
+          "path": ["accounting", "transactions", "<just_created_transaction>"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
